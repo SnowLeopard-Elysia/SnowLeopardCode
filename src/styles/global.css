@@ -94,9 +94,9 @@ p { text-wrap: pretty; }
 .eyebrow, .kicker { margin-bottom: 16px; color: var(--rose); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .eyebrow { display: flex; justify-content: center; align-items: center; gap: 10px; color: rgba(255,255,255,.62); }
 .eyebrow span { width: 26px; height: 1px; background: var(--rose); }
-.hero h1 { margin-bottom: 32px; overflow-wrap: anywhere; font-size: clamp(48px, 5.7vw, 76px); line-height: 1.12; letter-spacing: -0.04em; }
+.hero h1 { margin-bottom: 32px; overflow-wrap: anywhere; font-size: clamp(48px, 5.7vw, 76px); line-height: 1.14; letter-spacing: -0.032em; }
+.hero-title--desktop { display: grid; gap: clamp(15px, 1.25vw, 22px); }
 .hero-title--desktop span, .hero-title--desktop em { display: block; }
-.hero-title--desktop em { margin-top: .13em; }
 .hero h1 em { color: transparent; font-style: normal; background: linear-gradient(90deg, #fff 12%, #d9c0ca 48%, #b8d2d9); background-clip: text; -webkit-background-clip: text; }
 .hero-title--mobile { display: none; }
 .hero-lead { max-width: 740px; margin: 0 auto; overflow-wrap: anywhere; color: rgba(238,242,247,.68); font-size: 18px; line-height: 1.9; }
