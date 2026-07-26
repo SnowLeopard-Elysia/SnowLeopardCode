@@ -7,6 +7,7 @@ export default defineConfig({
   base: onGitHubPages ? "/SnowLeopardCode" : "/",
   output: "static",
   build: {
-    assets: "assets"
+    assets: "assets",
+    inlineStylesheets: "always"
   }
 });
