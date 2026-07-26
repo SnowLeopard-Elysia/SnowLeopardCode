@@ -1,0 +1,2 @@
+00115412b777f7116471cc56f0585690da355b53217bf3e4a9ce0cd5fb5fd3b8  SnowLeopardCode-0.3.0-windows-x64-Setup.exe
+ed589ecacc1f7c1c169356f682a62d6a832bd8d1469ba1c8181a45ddd2a05ad2  SnowLeopardCode-0.3.0-windows-x64-portable.zip

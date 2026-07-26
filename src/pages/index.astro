@@ -1,0 +1,397 @@
+---
+import "../styles/global.css";
+
+const providers = [
+  { name: "DeepSeek", status: "已支持" },
+  { name: "豆包", status: "已支持" },
+  { name: "千问", status: "已支持" },
+  { name: "GLM", status: "已支持" },
+  { name: "Kimi", status: "已支持" },
+  { name: "OpenAI", status: "已支持" },
+  { name: "Claude", status: "已支持" },
+  { name: "Gemini", status: "已支持" }
+];
+
+const capabilities = [
+  {
+    index: "01",
+    title: "从目标到结果",
+    body: "不只回答问题。它会理解目标、组织步骤、调用工具，并在一个任务中持续推进。",
+    className: "capability capability--wide"
+  },
+  {
+    index: "02",
+    title: "处理真实文件",
+    body: "阅读资料、整理目录、生成文档和表格，也能分析代码并完成修改。",
+    className: "capability"
+  },
+  {
+    index: "03",
+    title: "自由选择模型",
+    body: "在同一个应用中连接多家模型服务，根据速度、能力和成本选择合适模型。",
+    className: "capability"
+  },
+  {
+    index: "04",
+    title: "保留任务上下文",
+    body: "项目、任务和对话记录保存在本机，随时回到上一次进度继续处理。",
+    className: "capability capability--dark"
+  },
+  {
+    index: "05",
+    title: "能力可以扩展",
+    body: "通过 Skills 为不同工作补充专用流程，让常用做法沉淀为可复用能力。",
+    className: "capability"
+  }
+];
+
+const faqs = [
+  ["Snow Leopard Code 本身收费吗？", "Snow Leopard Code 智能体本身永久免费，不收取安装、订阅或功能费用。如需接入在线模型，相关费用以你所选择的模型服务商规则和账单为准，Snow Leopard Code 不收取也不代收模型费用。"],
+  ["API Key 会上传到 Snow Leopard Code 的服务器吗？", "不会。密钥默认保存到当前 Windows 用户的 Credential Manager。应用会使用密钥直接连接你选择的模型服务。"],
+  ["为什么有些模型没有推理力度选项？", "不同模型的官方接口能力不同。页面只显示该模型实际支持的档位，避免发送无效参数。"],
+  ["安装版和免安装版有什么区别？", "功能相同。安装版会引导选择位置并创建快捷方式；免安装版解压即可运行，更适合临时体验。"],
+  ["卸载后任务记录会消失吗？", "安装目录与个人数据分开保存。为了避免升级或重装时丢失任务，卸载程序不会主动清除个人数据。"],
+  ["目前支持哪些系统？", "当前正式发布范围是 Windows 10/11 64 位，暂未提供 macOS 与 Linux 安装包。"]
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111419" />
+    <meta name="description" content="Snow Leopard Code 是一款 Windows 本地智能任务助手，支持连接 DeepSeek、豆包、千问、GLM、Kimi、OpenAI、Claude 与 Gemini。" />
+    <meta name="keywords" content="Snow Leopard Code, AI 智能体, 本地 AI 助手, DeepSeek, Windows" />
+    <meta property="og:title" content="Snow Leopard Code｜连接你的 AI，让任务真正完成" />
+    <meta property="og:description" content="一款支持多模型的 Windows 本地智能任务助手。" />
+    <meta property="og:image" content="assets/workspace-light.png" />
+    <title>Snow Leopard Code｜Windows 本地智能任务助手</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <nav class="site-nav" aria-label="主导航">
+      <div class="wrap nav-inner">
+        <a class="brand" href="#top" aria-label="Snow Leopard Code 首页">
+          <img src="assets/app-cover.png" alt="" />
+          <span>Snow Leopard Code</span>
+          <small>V0.3</small>
+        </a>
+        <div class="nav-links">
+          <a href="#demos">功能演示</a>
+          <a href="#workflow">工作方式</a>
+          <a href="#models">模型支持</a>
+          <a href="#privacy">隐私与权限</a>
+          <a class="nav-download" href="#download">下载</a>
+        </div>
+        <button class="menu-button" type="button" aria-label="打开导航" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+      <div class="mobile-nav" hidden>
+        <a href="#demos">功能演示</a><a href="#workflow">工作方式</a><a href="#models">模型支持</a><a href="#privacy">隐私与权限</a><a href="#download">下载</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <div class="hero-glow hero-glow--rose"></div>
+      <div class="hero-glow hero-glow--ice"></div>
+      <div class="wrap hero-copy">
+        <p class="eyebrow"><span></span> WINDOWS 本地智能任务助手</p>
+        <h1 class="hero-title hero-title--desktop">连接你的 AI，<br /><em>让任务真正完成</em></h1>
+        <h1 class="hero-title hero-title--mobile"><span>连接你的 AI</span><em>让任务真正完成</em></h1>
+        <p class="hero-lead">
+          <span class="hero-lead--desktop">打开一个项目，描述你想完成的目标。Snow Leopard Code 会理解上下文、处理文件，并按你的权限设置持续推进。</span>
+          <span class="hero-lead--mobile">打开项目，描述目标。<br />AI 会理解上下文、处理文件，<br />并按你的权限持续推进。</span>
+        </p>
+        <div class="hero-actions">
+          <a class="button button--primary" href="#download">下载 Windows 版 <span aria-hidden="true">↓</span></a>
+          <a class="button button--ghost" href="#demos">查看真实演示 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="hero-meta" aria-label="产品信息">
+          <span>V0.3 测试版</span><i></i><span>无需注册</span><i></i><span>用户自备 API Key</span>
+        </div>
+      </div>
+
+    </header>
+
+    <main id="main">
+      <section class="trust-strip" aria-label="主要特点">
+        <div class="wrap trust-grid">
+          <span><b>Windows</b> 本地桌面运行</span>
+          <span><b>8 家模型</b> 按需自由选择</span>
+          <span><b>无需账号</b> 安装即可使用</span>
+          <span><b>自备密钥</b> 数据由你掌握</span>
+        </div>
+      </section>
+
+      <section class="section capabilities-section" id="capabilities">
+        <div class="wrap">
+          <div class="section-heading" data-reveal>
+            <p class="kicker">它不是另一个聊天窗口</p>
+            <h2>把复杂任务，变成清楚可控的完成过程</h2>
+            <p>从一句目标开始，围绕项目持续推进。普通用户不需要理解工具调用、上下文窗口或代理架构。</p>
+          </div>
+          <div class="capability-grid">
+            {capabilities.map((item) => (
+              <article class={item.className} data-reveal>
+                <span>{item.index}</span>
+                <div><h3>{item.title}</h3><p>{item.body}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section demo-section" id="demos">
+        <div class="wrap">
+          <div class="demo-heading" data-reveal>
+            <div>
+              <p class="kicker">真实任务 · 真实成果</p>
+              <h2>只说一句话，也能交付完整结果</h2>
+            </div>
+            <p>下面的指令、执行过程和最终文件均来自 Snow Leopard Code 的实际运行，不是概念界面。</p>
+          </div>
+
+          <div class="demo-stack">
+            <article class="demo-case demo-case--game" data-reveal>
+              <div class="demo-copy">
+                <span class="demo-eyebrow">案例 01 · 应用开发</span>
+                <h3>一句话，创建可运行的小游戏</h3>
+                <p>从空白文件夹开始，自动搭建项目、编写游戏逻辑、测试运行，并打包为可直接打开的 Windows 程序。</p>
+                <div class="demo-prompt">
+                  <span>你只需要说</span>
+                  <strong>“在当前文件夹创建一个类似经典横版闯关的游戏，最后打包成 EXE。”</strong>
+                </div>
+                <ul class="demo-deliverables" aria-label="游戏案例交付内容">
+                  <li>创建完整项目</li>
+                  <li>编写玩法与画面</li>
+                  <li>测试并打包 EXE</li>
+                </ul>
+              </div>
+              <div class="demo-media demo-media--game">
+                <figure class="demo-shot demo-shot--game-result">
+                  <button type="button" data-lightbox="assets/demos/game-result.png" aria-label="查看游戏运行结果大图"><img src="assets/demos/game-result.png" alt="由 Snow Leopard Code 创建并运行的横版闯关游戏" loading="lazy" /></button>
+                  <figcaption><b>最终成果</b><span>可直接运行的 Windows 游戏</span></figcaption>
+                </figure>
+                <figure class="demo-shot demo-shot--task">
+                  <button type="button" data-lightbox="assets/demos/game-task.png" aria-label="查看游戏创建任务大图"><img src="assets/demos/game-task.png" alt="Snow Leopard Code 创建游戏的实际任务过程" loading="lazy" /></button>
+                  <figcaption><b>执行过程</b><span>从一句指令持续推进到完成</span></figcaption>
+                </figure>
+              </div>
+            </article>
+
+            <article class="demo-case demo-case--data" data-reveal>
+              <div class="demo-copy">
+                <span class="demo-eyebrow">案例 02 · 数据分析</span>
+                <h3>一句话，自动获取数据并完成分析</h3>
+                <p>自动收集公开数据，整理为结构化表格，计算关键指标，并同时生成便于浏览的网页可视化图表。</p>
+                <div class="demo-prompt">
+                  <span>你只需要说</span>
+                  <strong>“获取近十年的公开数据，生成分析表格，并制作一份网页可视化报告。”</strong>
+                </div>
+                <ul class="demo-deliverables" aria-label="数据案例交付内容">
+                  <li>自动获取资料</li>
+                  <li>生成 Excel 分析</li>
+                  <li>制作网页图表</li>
+                </ul>
+                <p class="demo-disclaimer">示例仅用于展示数据整理与可视化能力，不构成投资建议。</p>
+              </div>
+              <div class="demo-media demo-media--data">
+                <figure class="demo-shot demo-shot--dashboard">
+                  <button type="button" data-lightbox="assets/demos/data-dashboard.png" aria-label="查看网页数据看板大图"><img src="assets/demos/data-dashboard.png" alt="Snow Leopard Code 生成的网页数据可视化看板" loading="lazy" /></button>
+                  <figcaption><b>网页可视化</b><span>指标、趋势与交互图表集中呈现</span></figcaption>
+                </figure>
+                <div class="demo-thumbnails">
+                  <figure class="demo-shot">
+                    <button type="button" data-lightbox="assets/demos/data-task.png" aria-label="查看数据分析任务大图"><img src="assets/demos/data-task.png" alt="Snow Leopard Code 执行数据采集与分析任务" loading="lazy" /></button>
+                    <figcaption>任务过程</figcaption>
+                  </figure>
+                  <figure class="demo-shot">
+                    <button type="button" data-lightbox="assets/demos/data-workbook-overview.png" aria-label="查看 Excel 分析总览大图"><img src="assets/demos/data-workbook-overview.png" alt="自动生成的 Excel 数据分析总览" loading="lazy" /></button>
+                    <figcaption>分析总览</figcaption>
+                  </figure>
+                  <figure class="demo-shot">
+                    <button type="button" data-lightbox="assets/demos/data-workbook-detail.png" aria-label="查看 Excel 明细数据大图"><img src="assets/demos/data-workbook-detail.png" alt="自动生成的 Excel 明细工作表" loading="lazy" /></button>
+                    <figcaption>数据明细</figcaption>
+                  </figure>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="workflow">
+        <div class="wrap workflow-grid">
+          <div class="workflow-copy" data-reveal>
+            <p class="kicker">三步开始</p>
+            <h2>不用学习复杂操作，直接从目标开始</h2>
+            <p>模型、项目和权限只需完成一次清晰选择，之后每个任务都沿用相同的工作方式。</p>
+            <ol class="steps">
+              <li><span>1</span><div><strong>连接模型</strong><p>填写自己的 API Key，验证后选择默认模型。</p></div></li>
+              <li><span>2</span><div><strong>打开项目</strong><p>选择已有文件夹，或者创建一个新的空白项目。</p></div></li>
+              <li><span>3</span><div><strong>描述目标</strong><p>告诉它需要完成什么，随时查看进度和结果。</p></div></li>
+            </ol>
+          </div>
+          <div class="workflow-visual" data-reveal>
+            <img src="assets/permission-menu.png" alt="Snow Leopard Code 权限选择界面" loading="lazy" />
+            <div class="visual-caption"><span>权限由你决定</span><b>请求确认 · 自动批准 · 完全访问</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section models-section" id="models">
+        <div class="wrap">
+          <div class="models-heading" data-reveal>
+            <div><p class="kicker">支持八家主流服务</p><h2>一个入口，自由选择模型</h2></div>
+            <p>已支持 DeepSeek、豆包、千问、GLM、Kimi、OpenAI、Claude 与 Gemini，可根据任务需求选择合适的模型。</p>
+          </div>
+          <div class="provider-grid">
+            {providers.map((provider, index) => (
+              <article class="provider" data-reveal style={`--delay:${index * 35}ms`}>
+                <span class="provider-mark">{provider.name.slice(0, 1)}</span>
+                <div><h3>{provider.name}</h3><p class="provider-status">{provider.status}</p></div>
+                <i aria-hidden="true">↗</i>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section privacy-section" id="privacy">
+        <div class="wrap privacy-shell" data-reveal>
+          <div class="privacy-copy">
+            <p class="kicker">本地、透明、可控</p>
+            <h2>你的任务留在你的电脑上</h2>
+            <p>无需 Snow Leopard Code 在线账号，没有云端任务同步。密钥、任务记录与项目设置由当前 Windows 用户管理。</p>
+            <a href="#faq">查看常见问题 <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="privacy-list">
+            <article><span>01</span><div><strong>密钥保存在系统凭据中</strong><p>默认写入 Windows Credential Manager，不进入任务记录或安装包。</p></div></article>
+            <article><span>02</span><div><strong>高风险操作遵循权限模式</strong><p>写文件、运行命令和访问工作区外内容可按需请求确认。</p></div></article>
+            <article><span>03</span><div><strong>模型请求直接发往服务商</strong><p>在线模型仍适用对应服务商的接口条款与隐私政策。</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="interface">
+        <div class="wrap">
+          <div class="section-heading" data-reveal>
+            <p class="kicker">真实产品界面</p>
+            <h2>每一个画面，都来自可运行版本</h2>
+            <p>不使用概念图代替功能。下面展示任务对话、权限选择与技能管理的实际界面。</p>
+          </div>
+          <div class="gallery-grid">
+            <figure class="gallery-main" data-reveal><button type="button" data-lightbox="assets/workspace-light.png"><img src="assets/workspace-light.png" alt="浅色任务工作区" loading="lazy" /></button><figcaption>任务工作区</figcaption></figure>
+            <figure data-reveal><button type="button" data-lightbox="assets/permission-menu.png"><img src="assets/permission-menu.png" alt="权限菜单" loading="lazy" /></button><figcaption>权限选择</figcaption></figure>
+            <figure data-reveal><button type="button" data-lightbox="assets/skills-settings.png"><img src="assets/skills-settings.png" alt="技能管理页面" loading="lazy" /></button><figcaption>技能管理</figcaption></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section download-section" id="download">
+        <div class="download-orbit"></div>
+        <div class="wrap">
+          <div class="download-heading" data-reveal>
+            <p class="kicker">当前版本 · V0.3</p>
+            <h2>在 Windows 上开始使用</h2>
+            <p>两个版本功能相同。第一次使用推荐安装版，也可以下载免安装压缩包直接体验。</p>
+          </div>
+          <div class="download-grid">
+            <article class="download-card download-card--recommended" data-reveal>
+              <span class="recommended">推荐</span>
+              <div><p class="download-type">Windows 安装版</p><h3>按向导完成安装</h3><p>可选择安装位置，并创建桌面和开始菜单快捷方式。</p></div>
+              <ul><li>Windows 10/11 64 位</li><li>约 36.7 MB</li><li>适合大多数用户</li></ul>
+              <a class="download-button" href="https://pan.quark.cn/s/378542a38216" target="_blank" rel="noopener noreferrer">夸克网盘下载 <span>↗</span></a>
+              <a class="download-alt" href="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-Setup.exe">备用下载 · GitHub</a>
+            </article>
+            <article class="download-card" data-reveal>
+              <div><p class="download-type">免安装压缩包</p><h3>解压后直接运行</h3><p>无需安装，适合临时体验或没有安装权限的电脑。</p></div>
+              <ul><li>Windows 10/11 64 位</li><li>约 21.2 MB</li><li>功能与安装版相同</li></ul>
+              <a class="download-button download-button--secondary" href="https://pan.quark.cn/s/74ff0a5506b5" target="_blank" rel="noopener noreferrer">夸克网盘下载 <span>↗</span></a>
+              <a class="download-alt" href="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-portable.zip">备用下载 · GitHub</a>
+            </article>
+          </div>
+          <div class="download-foot"><span>V0.3 测试版</span><span>需要 Microsoft Edge WebView2 Runtime</span><a href="downloads/SHA256SUMS.txt">SHA-256 校验</a></div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq">
+        <div class="wrap faq-grid">
+          <div class="faq-heading" data-reveal><p class="kicker">开始之前</p><h2>常见问题</h2><p>如果这里没有你的问题，可以加入交流群反馈。</p></div>
+          <div class="faq-list">
+            {faqs.map(([question, answer], index) => (
+              <details data-reveal open={index === 0}>
+                <summary>{question}<span aria-hidden="true">＋</span></summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="community-section">
+        <div class="wrap community-card" data-reveal>
+          <div><p class="kicker">仍在持续完善</p><h2>遇到问题，欢迎一起交流</h2><p>Snow Leopard Code 目前处于测试阶段。BUG 反馈、使用交流与功能建议，请加入群聊。</p></div>
+          <button class="group-button" type="button" data-copy-group><span>交流群</span><strong>1078186371</strong><i>复制群号</i></button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-grid">
+        <div class="footer-brand"><img src="assets/app-cover.png" alt="" /><div><strong>Snow Leopard Code</strong><span>Windows 本地智能任务助手</span></div></div>
+        <div class="footer-links"><a href="#demos">功能演示</a><a href="#models">模型支持</a><a href="#download">下载</a><a href="#faq">使用说明</a><a href="downloads/SHA256SUMS.txt">文件校验</a></div>
+        <p>© 2026 Snow Leopard Code · V0.3 测试版<br />第三方开源组件遵循各自许可证。</p>
+      </div>
+    </footer>
+
+    <div class="lightbox" hidden role="dialog" aria-modal="true" aria-label="界面大图预览"><button type="button" aria-label="关闭预览">×</button><img alt="" /></div>
+
+    <script is:inline>
+      const menuButton = document.querySelector('.menu-button');
+      const mobileNav = document.querySelector('.mobile-nav');
+      menuButton?.addEventListener('click', () => {
+        const open = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!open));
+        if (mobileNav) mobileNav.hidden = open;
+      });
+      mobileNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+        if (mobileNav) mobileNav.hidden = true;
+        menuButton?.setAttribute('aria-expanded', 'false');
+      }));
+
+      const lightbox = document.querySelector('.lightbox');
+      const lightboxImage = lightbox?.querySelector('img');
+      const lightboxClose = lightbox?.querySelector('button');
+      document.querySelectorAll('[data-lightbox]').forEach((button) => button.addEventListener('click', () => {
+        if (!(lightbox instanceof HTMLElement) || !(lightboxImage instanceof HTMLImageElement)) return;
+        lightboxImage.src = button.dataset.lightbox || '';
+        lightbox.hidden = false;
+        document.body.classList.add('modal-open');
+        lightboxClose?.focus();
+      }));
+      const closeLightbox = () => { if (lightbox instanceof HTMLElement) lightbox.hidden = true; document.body.classList.remove('modal-open'); };
+      lightboxClose?.addEventListener('click', closeLightbox);
+      lightbox?.addEventListener('click', (event) => { if (event.target === lightbox) closeLightbox(); });
+      window.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeLightbox(); });
+
+      document.querySelector('[data-copy-group]')?.addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        try {
+          await navigator.clipboard.writeText('1078186371');
+          const label = button.querySelector('i');
+          if (label) { label.textContent = '已复制'; setTimeout(() => label.textContent = '复制群号', 1600); }
+        } catch { window.prompt('复制群号', '1078186371'); }
+      });
+
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      }), { threshold: 0.12 });
+      document.querySelectorAll('[data-reveal]').forEach((element) => observer.observe(element));
+    </script>
+  </body>
+</html>
