@@ -65,7 +65,7 @@ const faqs = [
     <meta name="keywords" content="Snow Leopard Code, AI 智能体, 本地 AI 助手, DeepSeek, Windows" />
     <meta property="og:title" content="Snow Leopard Code｜连接你的 AI，让任务真正完成" />
     <meta property="og:description" content="一款支持多模型的 Windows 本地智能任务助手。" />
-    <meta property="og:image" content="assets/workspace-light.png" />
+    <meta property="og:image" content="assets/workspace-live.png" />
     <title>Snow Leopard Code｜Windows 本地智能任务助手</title>
     <link rel="icon" href="favicon.ico" />
   </head>
@@ -100,7 +100,7 @@ const faqs = [
       <div class="hero-glow hero-glow--ice"></div>
       <div class="wrap hero-copy">
         <p class="eyebrow"><span></span> WINDOWS 本地智能任务助手</p>
-        <h1 class="hero-title hero-title--desktop">连接你的 AI，<br /><em>让任务真正完成</em></h1>
+        <h1 class="hero-title hero-title--desktop"><span>连接你的 AI，</span><em>让任务真正完成</em></h1>
         <h1 class="hero-title hero-title--mobile"><span>连接你的 AI</span><em>让任务真正完成</em></h1>
         <p class="hero-lead">
           <span class="hero-lead--desktop">打开一个项目，描述你想完成的目标。Snow Leopard Code 会理解上下文、处理文件，并按你的权限设置持续推进。</span>
@@ -114,7 +114,16 @@ const faqs = [
           <span>V0.3 测试版</span><i></i><span>无需注册</span><i></i><span>用户自备 API Key</span>
         </div>
       </div>
-
+      <figure class="hero-product" data-reveal>
+        <div class="hero-product__bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <b>Snow Leopard Code</b>
+        </div>
+        <button type="button" data-lightbox="assets/workspace-live.png" aria-label="查看 Snow Leopard Code 实际运行界面大图">
+          <img src="assets/workspace-live.png" alt="Snow Leopard Code 实际运行界面：项目、任务与输入区域" />
+        </button>
+        <figcaption>实时运行界面 · Windows 版 V0.3</figcaption>
+      </figure>
     </header>
 
     <main id="main">
@@ -301,18 +310,34 @@ const faqs = [
             <p>两个版本功能相同。第一次使用推荐安装版，也可以下载免安装压缩包直接体验。</p>
           </div>
           <div class="download-grid">
-            <article class="download-card download-card--recommended" data-reveal>
+            <article class="download-card download-card--recommended" data-reveal data-download-card>
               <span class="recommended">推荐</span>
               <div><p class="download-type">Windows 安装版</p><h3>按向导完成安装</h3><p>可选择安装位置，并创建桌面和开始菜单快捷方式。</p></div>
               <ul><li>Windows 10/11 64 位</li><li>约 36.7 MB</li><li>适合大多数用户</li></ul>
-              <a class="download-button" href="https://pan.quark.cn/s/378542a38216" target="_blank" rel="noopener noreferrer">夸克网盘下载 <span>↗</span></a>
-              <a class="download-alt" href="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-Setup.exe">备用下载 · GitHub</a>
+              <div class="download-actions">
+                <label class="download-source">
+                  <span>下载来源</span>
+                  <select data-source-select aria-label="选择 Windows 安装版下载来源">
+                    <option value="https://pan.quark.cn/s/378542a38216" data-source="夸克网盘" selected>夸克网盘（推荐）</option>
+                    <option value="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-Setup.exe" data-source="GitHub Releases">GitHub Releases</option>
+                  </select>
+                </label>
+                <a class="download-button" data-download-link href="https://pan.quark.cn/s/378542a38216" target="_blank" rel="noopener noreferrer"><span data-download-label>从夸克网盘下载</span><i aria-hidden="true">↗</i></a>
+              </div>
             </article>
-            <article class="download-card" data-reveal>
+            <article class="download-card" data-reveal data-download-card>
               <div><p class="download-type">免安装压缩包</p><h3>解压后直接运行</h3><p>无需安装，适合临时体验或没有安装权限的电脑。</p></div>
               <ul><li>Windows 10/11 64 位</li><li>约 21.2 MB</li><li>功能与安装版相同</li></ul>
-              <a class="download-button download-button--secondary" href="https://pan.quark.cn/s/74ff0a5506b5" target="_blank" rel="noopener noreferrer">夸克网盘下载 <span>↗</span></a>
-              <a class="download-alt" href="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-portable.zip">备用下载 · GitHub</a>
+              <div class="download-actions">
+                <label class="download-source">
+                  <span>下载来源</span>
+                  <select data-source-select aria-label="选择免安装压缩包下载来源">
+                    <option value="https://pan.quark.cn/s/74ff0a5506b5" data-source="夸克网盘" selected>夸克网盘（推荐）</option>
+                    <option value="https://github.com/SnowLeopard-Elysia/SnowLeopardCode/releases/download/v0.3.0/SnowLeopardCode-0.3.0-windows-x64-portable.zip" data-source="GitHub Releases">GitHub Releases</option>
+                  </select>
+                </label>
+                <a class="download-button download-button--secondary" data-download-link href="https://pan.quark.cn/s/74ff0a5506b5" target="_blank" rel="noopener noreferrer"><span data-download-label>从夸克网盘下载</span><i aria-hidden="true">↗</i></a>
+              </div>
             </article>
           </div>
           <div class="download-foot"><span>V0.3 测试版</span><span>需要 Microsoft Edge WebView2 Runtime</span><a href="downloads/SHA256SUMS.txt">SHA-256 校验</a></div>
@@ -386,6 +411,21 @@ const faqs = [
           const label = button.querySelector('i');
           if (label) { label.textContent = '已复制'; setTimeout(() => label.textContent = '复制群号', 1600); }
         } catch { window.prompt('复制群号', '1078186371'); }
+      });
+
+      document.querySelectorAll('[data-download-card]').forEach((card) => {
+        const select = card.querySelector('[data-source-select]');
+        const link = card.querySelector('[data-download-link]');
+        const label = card.querySelector('[data-download-label]');
+        if (!(select instanceof HTMLSelectElement) || !(link instanceof HTMLAnchorElement)) return;
+        const syncDownloadSource = () => {
+          const option = select.options[select.selectedIndex];
+          if (!option) return;
+          link.href = option.value;
+          if (label) label.textContent = `从${option.dataset.source || option.textContent || '所选来源'}下载`;
+        };
+        select.addEventListener('change', syncDownloadSource);
+        syncDownloadSource();
       });
 
       const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
